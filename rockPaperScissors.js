@@ -29,12 +29,10 @@ function’s playerSelection parameter case-insensitive (so users can input rock
 RocK or any other variation).
 */
 
-const computerSelection = getComputerChoice()
+const computerSelection = getComputerChoice();
 const playerSelection = "scissors";
 
-console.log(computerSelection);
-
-function singleRound(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
     let playerLowerCase = playerSelection.toLowerCase();
     let playerChoice = playerLowerCase.charAt(0).toUpperCase() + playerLowerCase.slice(1);
     if (computerSelection === "Paper" && playerChoice === "Rock") {
@@ -60,4 +58,33 @@ function singleRound(playerSelection, computerSelection) {
     }
 }
 
-console.log(singleRound(playerSelection, computerSelection));
+/*
+3. Write a NEW function called game(). Use the previous function inside of this one to 
+play a 5 round game that keeps score and reports a winner or loser at the end.
+
+3a. call playRound function 5 times
+*/
+
+function game() {
+    let humanChoice1 = prompt("Rock, Paper, or Scissors?")
+    round1 = playRound(humanChoice1, getComputerChoice());
+    console.log(round1);
+
+    let humanChoice2 = prompt("Rock, Paper, or Scissors?")
+    round2 = playRound(humanChoice2, getComputerChoice());
+    console.log(round2)
+
+    let humanChoice3 = prompt("Rock, Paper, or Scissors?")
+    round3 = playRound(humanChoice3, getComputerChoice());
+    console.log(round3)
+
+    let humanChoice4 = prompt("Rock, Paper, or Scissors?")
+    round4 = playRound(humanChoice4, getComputerChoice());
+    console.log(round4)
+
+    let humanChoice5 = prompt("Rock, Paper, or Scissors?")
+    round5 = playRound(humanChoice5, getComputerChoice());
+    console.log(round5)
+} 
+
+game();
