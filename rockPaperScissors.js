@@ -33,6 +33,10 @@ const computerSelection = getComputerChoice();
 const playerSelection = "scissors";
 
 function playRound(playerSelection, computerSelection) {
+    if (playerSelection === null) {
+        return "Rock, Paper, or Scissors... you must decide.";
+    } 
+
     let playerLowerCase = playerSelection.toLowerCase();
     let playerChoice = playerLowerCase.charAt(0).toUpperCase() + playerLowerCase.slice(1);
     if (computerSelection === "Paper" && playerChoice === "Rock") {
@@ -62,29 +66,84 @@ function playRound(playerSelection, computerSelection) {
 3. Write a NEW function called game(). Use the previous function inside of this one to 
 play a 5 round game that keeps score and reports a winner or loser at the end.
 
-3a. call playRound function 5 times
+3a. Call playRound function 5 times
+
+3b. Count Human wins and Computer wins
 */
 
 function game() {
-    let humanChoice1 = prompt("Rock, Paper, or Scissors?")
-    round1 = playRound(humanChoice1, getComputerChoice());
-    console.log(round1);
+    let humanScore = 0;
+    let computerScore = 0;
 
-    let humanChoice2 = prompt("Rock, Paper, or Scissors?")
-    round2 = playRound(humanChoice2, getComputerChoice());
-    console.log(round2)
 
-    let humanChoice3 = prompt("Rock, Paper, or Scissors?")
-    round3 = playRound(humanChoice3, getComputerChoice());
-    console.log(round3)
+    let humanChoice = prompt("Rock, Paper, or Scissors?")
+    let round = playRound(humanChoice, getComputerChoice());
+    let firstFive = round.substring(0, 5);
+    if (firstFive === "You L") {
+        computerScore++;
+    } if (firstFive === "You W") {
+        humanScore++;
+    }
+    console.log(round);
+    console.log("Human " + humanScore);
+    console.log("Computer " + computerScore);
 
-    let humanChoice4 = prompt("Rock, Paper, or Scissors?")
-    round4 = playRound(humanChoice4, getComputerChoice());
-    console.log(round4)
+    humanChoice = prompt("Rock, Paper, or Scissors?")
+    round = playRound(humanChoice, getComputerChoice());
+    firstFive = round.substring(0, 5);
+    if (firstFive === "You L") {
+        computerScore++;
+    } if (firstFive === "You W") {
+        humanScore++;
+    }
+    console.log(round);
+    console.log("Human " + humanScore);
+    console.log("Computer " + computerScore);
 
-    let humanChoice5 = prompt("Rock, Paper, or Scissors?")
-    round5 = playRound(humanChoice5, getComputerChoice());
-    console.log(round5)
+
+    humanChoice = prompt("Rock, Paper, or Scissors?")
+    round = playRound(humanChoice, getComputerChoice());
+    firstFive = round.substring(0, 5);
+    if (firstFive === "You L") {
+        computerScore++;
+    } if (firstFive === "You W") {
+        humanScore++;
+    }
+    console.log(round);
+    console.log("Human " + humanScore);
+    console.log("Computer " + computerScore);
+
+    humanChoice = prompt("Rock, Paper, or Scissors?")
+    round = playRound(humanChoice, getComputerChoice());
+    firstFive = round.substring(0, 5);
+    if (firstFive === "You L") {
+        computerScore++;
+    } if (firstFive === "You W") {
+        humanScore++;
+    }
+    console.log(round);
+    console.log("Human " + humanScore);
+    console.log("Computer " + computerScore);
+
+    humanChoice = prompt("Rock, Paper, or Scissors?")
+    round = playRound(humanChoice, getComputerChoice());
+    firstFive = round.substring(0, 5);
+    if (firstFive === "You L") {
+        computerScore++;
+    } if (firstFive === "You W") {
+        humanScore++;
+    }
+    console.log(round);
+    console.log("Human " + humanScore);
+    console.log("Computer " + computerScore);
+
+    if (humanScore > computerScore) {
+        console.log("You win!");
+    } else if (humanScore < computerScore) {
+        console.log("You lost, better luck next time!");
+    } else {
+        console.log("Tie!")
+    }
 } 
 
 game();
