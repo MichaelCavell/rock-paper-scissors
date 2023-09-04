@@ -13,9 +13,6 @@ function getComputerChoice() {
     }
 }
 
-//const computerSelection = getComputerChoice();
-//const playerSelection = "scissors";
-
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === null) {
         return "Rock, Paper, or Scissors... you must decide.";
@@ -47,89 +44,19 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-/*function game() {
-    let humanScore = 0;
-    let computerScore = 0;
-
-    let firstFive = round.substring(0, 5);
-    if (firstFive === "You L") {
-        computerScore++;
-    } if (firstFive === "You W") {
-        humanScore++;
-    }
-    console.log(round);
-    console.log("Human " + humanScore);
-    console.log("Computer " + computerScore);
-
-    humanChoice = prompt("Rock, Paper, or Scissors?")
-    round = playRound(humanChoice, getComputerChoice());
-    firstFive = round.substring(0, 5);
-    if (firstFive === "You L") {
-        computerScore++;
-    } if (firstFive === "You W") {
-        humanScore++;
-    }
-    console.log(round);
-    console.log("Human " + humanScore);
-    console.log("Computer " + computerScore);
-
-
-    humanChoice = prompt("Rock, Paper, or Scissors?")
-    round = playRound(humanChoice, getComputerChoice());
-    firstFive = round.substring(0, 5);
-    if (firstFive === "You L") {
-        computerScore++;
-    } if (firstFive === "You W") {
-        humanScore++;
-    }
-    console.log(round);
-    console.log("Human " + humanScore);
-    console.log("Computer " + computerScore);
-
-    humanChoice = prompt("Rock, Paper, or Scissors?")
-    round = playRound(humanChoice, getComputerChoice());
-    firstFive = round.substring(0, 5);
-    if (firstFive === "You L") {
-        computerScore++;
-    } if (firstFive === "You W") {
-        humanScore++;
-    }
-    console.log(round);
-    console.log("Human " + humanScore);
-    console.log("Computer " + computerScore);
-
-    humanChoice = prompt("Rock, Paper, or Scissors?")
-    round = playRound(humanChoice, getComputerChoice());
-    firstFive = round.substring(0, 5);
-    if (firstFive === "You L") {
-        computerScore++;
-    } if (firstFive === "You W") {
-        humanScore++;
-    }
-    console.log(round);
-    console.log("Human " + humanScore);
-    console.log("Computer " + computerScore);
-
-    if (humanScore > computerScore) {
-        console.log("You win!");
-    } else if (humanScore < computerScore) {
-        console.log("You lost, better luck next time!");
-    } else {
-        console.log("Tie!")
-    }
-} */
-
 document.addEventListener('DOMContentLoaded', function() {
-    const rock = document.getElementById("rock");
+    const rock = document.getElementById('rock');
     const paper = document.getElementById('paper');
     const scissors = document.getElementById('scissors');
     const score = document.getElementById('score');
     const roundResult = document.getElementById('result');
-
+    const page = document.getElementById('page');
+    
     let humanScore = 0;
     let computerScore = 0;
+    let rounds = 0;
 
-    function counter() {
+    function scoreCounter() {
         let roundString = roundResult.textContent;
         let firstFive = roundString.substring(0, 5);
         if (firstFive === "You L") {
@@ -141,6 +68,36 @@ document.addEventListener('DOMContentLoaded', function() {
         currentScore.textContent = `Human: ${humanScore} | Internet: ${computerScore}`;
     }
 
+    function roundCounter() {
+        rounds++
+    }
+
+    function clearPage() {
+        const blankPage = page
+
+        if (rounds >= 5) {
+            blankPage.removeChild(rock);
+            blankPage.removeChild(paper);
+            blankPage.removeChild(scissors);
+            blankPage.removeChild(roundResult);
+            blankPage.removeChild(score);
+        }
+    }
+
+    function gameWinner() {
+        const winningMessage = document.createElement('h1');
+
+        if (rounds >= 5 && (computerScore > humanScore)) {
+            winningMessage.textContent = `You Lose! Refresh your browser to play again. Final Score: Human: ${humanScore} | Internet: ${computerScore}`;
+        } else if (rounds >= 5 && (computerScore < humanScore)) {
+            winningMessage.textContent = `You Win! Refresh your browser to play again. Final Score: Human: ${humanScore} | Internet: ${computerScore}`;
+        } else if (rounds >= 5) {
+            winningMessage.textContent = `Tie! Refresh your browser to play again. Final Score: Human: ${humanScore} | Internet: ${computerScore}`;
+        }
+
+        document.body.appendChild(winningMessage)
+    }
+
     rock.addEventListener('click', function() {
         const userInput = "rock";
         const computerInput = getComputerChoice(); 
@@ -148,7 +105,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const resultDisplay = document.getElementById('result');
         resultDisplay.textContent = result;
     });
-    rock.addEventListener('click', counter);
+    rock.addEventListener('click', scoreCounter);
+    rock.addEventListener('click', roundCounter);
+    rock.addEventListener('click', clearPage);
+    rock.addEventListener('click', gameWinner);
 
     paper.addEventListener('click', function() {
         const userInput = "paper";
@@ -157,7 +117,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const resultDisplay = document.getElementById('result');
         resultDisplay.textContent = result;
     });
-    paper.addEventListener('click', counter);
+    paper.addEventListener('click', scoreCounter);
+    paper.addEventListener('click', roundCounter);
+    paper.addEventListener('click', clearPage);
+    paper.addEventListener('click', gameWinner);
+
 
     scissors.addEventListener('click', function() {
         const userInput = "scissors";
@@ -166,6 +130,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const resultDisplay = document.getElementById('result');
         resultDisplay.textContent = result;
     });
-    scissors.addEventListener('click', counter);
+    scissors.addEventListener('click', scoreCounter);
+    scissors.addEventListener('click', roundCounter);
+    scissors.addEventListener('click', clearPage);
+    scissors.addEventListener('click', gameWinner);
+
 });
 
