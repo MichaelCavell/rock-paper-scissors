@@ -45,20 +45,61 @@ function singleRound(playerSelection, computerSelection) {
     }
 }
 
-Write a NEW function called playGame(). Use the previous function inside of this one to play a five round game that 
-keeps score and reports a winner or loser at the end. You have not officially learned how to “loop” over code to 
-repeat function calls… if you already know about loops from somewhere else (or if you feel like doing some more learning) 
-feel free to use them. If not, don’t worry! Just call your playRound function 5 times in a row. Loops are covered in the next lesson.
-At this point you should be using console.log() to display the results of each round and the winner at the end. Use prompt() to get input 
-from the user. Read the docs here if you need to. Feel free to re-work your previous functions if you need to. Specifically, 
-you might want to change the return value to something more useful. Feel free to create more “helper” functions if you think it 
-would be useful.
-
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-        singleRound('rock', getComputerChoice);
+function winnerCheck(string) {
+    if (string.includes('You Lose!')) {
+        return 1;
+    } else if (string.includes('You Win!')) {
+        return 2;
+    } else { 
+        return 3;
     }
 }
 
+function gameWinnerCheck(computerScore, userScore) {
+    if (computerScore > userScore) {
+        return 1;
+    } else if (computerScore < userScore) {
+        return 2;
+    } else {
+        return 3;
+    }
+}
 
-let checkVal = singleRound('SCISSORS', getComputerChoice);
+function playGame() {
+    let computerScore = 0;
+    let userScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        let userMove = prompt('Rock, Paper, or Scissors?')
+        let currentRound = singleRound(userMove, getComputerChoice);
+        console.log(currentRound);
+        let roundWinner = winnerCheck(currentRound);
+        switch (roundWinner) {
+            case 1:
+                computerScore++
+                break;
+            case 2:
+                userScore++
+                break;      
+        } 
+        console.log(`The current score is Computer: ${computerScore} | User(you!): ${userScore}`);
+    }
+
+    let gameWinner = gameWinnerCheck(computerScore, userScore);
+    switch (gameWinner) {
+        case 1:
+            console.log(`You lose! The final score is Computer: ${computerScore} | User(you!): ${userScore}`)
+            console.log(`Refresh to play again!`);
+            break;
+        case 2:
+            console.log(`You win! The final score is Computer: ${computerScore} | User(you!): ${userScore}`);
+            console.log(`Refresh to play again!`);
+            break;  
+        case 3:  
+            console.log(`You tie! The final score is Computer: ${computerScore} | User(you!): ${userScore}`);
+            console.log(`Refresh to play again!`);
+            break;  
+    } 
+}
+
+playGame();
