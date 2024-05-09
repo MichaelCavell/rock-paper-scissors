@@ -14,6 +14,8 @@ function getComputerChoice() {
 function singleRound(playerSelection, computerSelection) {
     let playerChoice = playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase();
     let computerChoice = computerSelection();
+    console.log(playerChoice);
+    console.log(computerChoice);
 
     if (playerChoice === 'Rock') {
         switch (computerChoice) {
@@ -102,9 +104,17 @@ function playGame() {
     } 
 }
 
-//playGame();
-const computerButtons = document.querySelector('.computer').children
-Array.from(computerButtons).forEach((button) => button.addEventListener('click', deactivate));
-function deactivate(e) {
-    e.preventDefault();
+playGame();
+
+////////////////////////
+const matchButton = document.querySelector('.match-button');
+matchButton.addEventListener('click', playGame);
+
+const playerButtons = document.querySelector('.player').children;
+for (let button of playerButtons) {
+    button.addEventListener('click', (e) => {
+        const playerChoice = e.target.dataset.selection;
+        singleRound(playerChoice, getComputerChoice);
+    })
 }
+

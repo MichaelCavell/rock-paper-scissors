@@ -52,7 +52,7 @@ button:hover {
     justify-content: center;
 } 
 
-.selection-display.human {
+.selection-display.player {
     justify-content: end;
 } 
 
@@ -69,7 +69,7 @@ button:hover {
     border: 1px solid;
 }
 
-.human > .selection:active{
+.player > .selection:active{
     background-color: lightgray;
 }
 

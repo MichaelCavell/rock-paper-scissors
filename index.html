@@ -11,22 +11,22 @@
     <h1>Rock! Paper! Scissors!</h1>
     <p class="description">Hone your rock paper scissors skills in best of 5 matches against the 
     computer.</p>
-    <button class='match-status'>Start Match!</button>
+    <button class='match-button'>Start Match!</button>
     <div id='selection-area'>
         <div class='player-area'>
           <h2>Player</h2>
-          <div class='selection-display human'>
-              <button class='selection'>🪨</button>
-              <button class='selection'>📄</button>
-              <button class='selection'>✂️</button>
+          <div class='selection-display player'>
+              <button data-selection="rock" class='selection'>🪨</button>
+              <button data-selection="paper" class='selection'>📄</button>
+              <button data-selection="scissors" class='selection'>✂️</button>
           </div>
         </div>
         <div class='computer-area'>
           <h2>Computer</h2>
           <div class='selection-display computer'>
-              <div class='selection'>🪨</div>
-              <div class='selection'>📄</div>
-              <div class='selection'>✂️</div>
+              <div data-selection="rock" class='selection'>🪨</div>
+              <div data-selection="paper" class='selection'>📄</div>
+              <div data-selection="scissors" class='selection'>✂️</div>
           </div>
         </div>
     </div>
@@ -50,7 +50,6 @@
                 <p>Round 5: </p>
             </div>
         </div>
-
     </div>
 </body>
 </html>
