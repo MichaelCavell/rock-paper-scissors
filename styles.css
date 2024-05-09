@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: "Comic Neue", cursive;
+}
+
+body {
+    height: 100vh;
+}
+
+h1, p, button {
+    margin: .75rem;
+}
+
+h1 {
+    padding-top: 2rem;
+}
+
+.player-area h2, .computer-area h2 {
+    font-size: .95rem;
+}
+
+button {
+    padding: 5px;
+    transition: box-shadow 0.3s ease; 
+    cursor: pointer; 
+    margin: 1rem;
+}
+
+button:hover { 
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.6); 
+} 
+
+.description {
+    width: 75%;
+    margin: auto;
+}
+
+#selection-area {
+    display: flex;
+    justify-content: center;
+}
+
+.selection-display {
+    margin: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} 
+
+.selection-display.human {
+    justify-content: end;
+} 
+
+.selection-display.computer {
+    justify-content: start;
+} 
+
+.selection {
+    margin: 5px;
+    font-size: 5rem;
+    background-color: transparent;
+    height: 105px;
+    padding: 5px;
+    border: 1px solid;
+}
+
+.human > .selection:active{
+    background-color: lightgray;
+}
+
+#scoreboard > h2 {
+    margin-top: .5rem;
+    margin-bottom: 0px;
+}
+
+.scores {
+    display: flex;
+    justify-content: center;
+    margin-top: 0px;
+}
+
+.scores > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    margin-top: .25rem;
+} 
+
+.scores h3, .scores p {
+    align-self: center;
+    margin: 5px;
+}

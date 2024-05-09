@@ -69,21 +69,21 @@ function playGame() {
     let computerScore = 0;
     let userScore = 0;
 
-    for (let i = 0; i < 5; i++) {
-        let userMove = prompt('Rock, Paper, or Scissors?')
-        let currentRound = singleRound(userMove, getComputerChoice);
-        console.log(currentRound);
-        let roundWinner = winnerCheck(currentRound);
-        switch (roundWinner) {
-            case 1:
-                computerScore++
-                break;
-            case 2:
-                userScore++
-                break;      
-        } 
-        console.log(`The current score is Computer: ${computerScore} | User(you!): ${userScore}`);
-    }
+    // for (let i = 0; i < 5; i++) {
+    //     let userMove = prompt('Rock, Paper, or Scissors?')
+    //     let currentRound = singleRound(userMove, getComputerChoice);
+    //     console.log(currentRound);
+    //     let roundWinner = winnerCheck(currentRound);
+    //     switch (roundWinner) {
+    //         case 1:
+    //             computerScore++
+    //             break;
+    //         case 2:
+    //             userScore++
+    //             break;      
+    //     } 
+    //     console.log(`The current score is Computer: ${computerScore} | User(you!): ${userScore}`);
+    // }
 
     let gameWinner = gameWinnerCheck(computerScore, userScore);
     switch (gameWinner) {
@@ -102,4 +102,9 @@ function playGame() {
     } 
 }
 
-playGame();
+//playGame();
+const computerButtons = document.querySelector('.computer').children
+Array.from(computerButtons).forEach((button) => button.addEventListener('click', deactivate));
+function deactivate(e) {
+    e.preventDefault();
+}

@@ -5,7 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./script.js" defer></script>
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+    <h1>Rock! Paper! Scissors!</h1>
+    <p class="description">Hone your rock paper scissors skills in best of 5 matches against the 
+    computer.</p>
+    <button class='match-status'>Start Match!</button>
+    <div id='selection-area'>
+        <div class='player-area'>
+          <h2>Player</h2>
+          <div class='selection-display human'>
+              <button class='selection'>🪨</button>
+              <button class='selection'>📄</button>
+              <button class='selection'>✂️</button>
+          </div>
+        </div>
+        <div class='computer-area'>
+          <h2>Computer</h2>
+          <div class='selection-display computer'>
+              <div class='selection'>🪨</div>
+              <div class='selection'>📄</div>
+              <div class='selection'>✂️</div>
+          </div>
+        </div>
+    </div>
+    <div id ='scoreboard'>
+        <h2>Current Score</h2>
+        <div class="scores">
+            <div class="player-scores">
+                <h3>Player: 0 </h3>
+                <p>Round 1: ✂️</p>
+                <p>Round 2: </p>
+                <p>Round 3: </p>
+                <p>Round 4: </p>
+                <p>Round 5: </p>
+            </div>
+            <div class="computer-scores">
+                <h3>Computer: 0 </h3>
+                <p>Round 1: ✂️</p>
+                <p>Round 2: </p>
+                <p>Round 3: </p>
+                <p>Round 4: </p>
+                <p>Round 5: </p>
+            </div>
+        </div>
+
+    </div>
 </body>
 </html>
